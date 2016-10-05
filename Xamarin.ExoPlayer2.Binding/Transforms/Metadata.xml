@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+
+	<!-- 
+		Possible errors on implmentation:
+		*Missing methods, some decode methods were included manually
+		*The setter of PlaybackSpeed (check Additions)
+		*getSeekMap renaming
+	-->
+
+	<!-- Same method names in nested interfaces -->
+	<attr path="/api/package[@name='com.google.android.exoplayer2']/interface[@name='SimpleExoPlayer.VideoListener']/method[@name='onRenderedFirstFrame' and count(parameter)=1]" name="eventName">RenderedFirstFrame2</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2']/interface[@name='SimpleExoPlayer.VideoListener']/method[@name='onVideoDisabled' and count(parameter)=1]" name="eventName">VideoDisabled2</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2']/interface[@name='SimpleExoPlayer.VideoListener']/method[@name='onVideoSizeChanged' and count(parameter)=4]" name="eventName">VideoSizeChanged2</attr>
+
+	<!-- Changing visibility (C# can't override visibility) -->
+	<attr path="/api/package[@name='com.google.android.exoplayer2.extractor.mkv']/interface[@name='EbmlReaderOutput']" name="visibility">public</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.extractor.mp4']/class[@name='DefaultSampleValues']" name="visibility">public</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.extractor.mp4']/class[@name='TrackFragment']" name="visibility">public</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.extractor.mp4']/class[@name='TrackSampleTable']" name="visibility">public</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.extractor.ts']/class[@name='ElementaryStreamReader']" name="visibility">public</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.source.smoothstreaming.manifest']/class[@name='SsManifestParser.QualityLevelParser']/method[@name='build' and count(parameter)=0]" name="visibility">protected</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.source.smoothstreaming.manifest']/class[@name='SsManifestParser.SmoothStreamingMediaParser']/method[@name='build' and count(parameter)=0]" name="visibility">protected</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.source.smoothstreaming.manifest']/class[@name='SsManifestParser.StreamIndexParser']/method[@name='build' and count(parameter)=0]" name="visibility">protected</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.source.smoothstreaming.manifest']/class[@name='SsManifestParser.ProtectionParser']/method[@name='build' and count(parameter)=0]" name="visibility">protected</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.source.smoothstreaming.manifest']/class[@name='SsManifestParser.ElementParser']/method[@name='build' and count(parameter)=0]" name="visibility">protected</attr>
+
+	<!-- Removing not implemented abstract members -->
+	<remove-node path="/api/package[@name='com.google.android.exoplayer2.text']/class[@name='SubtitleOutputBuffer']/method[@name='release' and count(parameter)=0]" />
+
+	<!-- Resolving generic interface implementation (Generic returns or parameters should be java.lang.Object) -->
+	<attr path="/api/package/class/method[@name='compareTo']/parameter[1]" name="type">java.lang.Object</attr>
+	<attr path="/api/package/class/method[@name='dequeueInputBuffer']" name="return">java.lang.Object</attr>
+	<attr path="/api/package/class/method[@name='dequeueOutputBuffer']" name="return">java.lang.Object</attr>
+	<attr path="/api/package/class/method[@name='createTrackSelection']" name="return">com.google.android.exoplayer2.trackselection.TrackSelection</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2']/class[@name='SimpleExoPlayer']/method[@name='setId3Output' and count(parameter)=1]/parameter[1]" name="type">com.google.android.exoplayer2.metadata.MetadataRenderer.Output&lt;java.lang.Object&gt;</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.drm']/class[@name='DrmInitData']/method[@name='compare']/parameter" name="type">java.lang.Object</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.drm']/interface[@name='ExoMediaDrm']/method[@name='setOnEventListener' and count(parameter)=1]/parameter[1]" name="type">java.lang.Object</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.drm']/class[@name='FrameworkMediaDrm']/method[@name='setOnEventListener' and count(parameter)=1]/parameter[1]" name="type">java.lang.Object</attr>
+<!--	<attr path="/api/package[@name='com.google.android.exoplayer2.drm']/interface[@name='ExoMediaDrm.OnEventListener']/method[@name='onEvent' and count(parameter)=5]/parameter[1]" name="type">java.lang.Object</attr>
+-->	<attr path="/api/package[@name='com.google.android.exoplayer2.metadata.id3']/class[@name='Id3Decoder']/method[@name='decode' and count(parameter)=2 and parameter[1][@type='byte[]'] and parameter[2][@type='int']]" name="return">java.lang.Object</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.metadata']/interface[@name='MetadataRenderer.Output']/method[@name='onMetadata' and count(parameter)=1]/parameter[1]" name="type">java.lang.Object</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.text']/class[@name='SimpleSubtitleDecoder']/method[@name='createInputBuffer' and count(parameter)=0]" name="return">java.lang.Object</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.text']/class[@name='SimpleSubtitleDecoder']/method[@name='createInputBuffer' and count(parameter)=0]" name="final">false</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.text']/class[@name='SimpleSubtitleDecoder']/method[@name='createOutputBuffer' and count(parameter)=0]" name="return">java.lang.Object</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.text']/class[@name='SimpleSubtitleDecoder']/method[@name='createOutputBuffer' and count(parameter)=0]" name="final">false</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.text.eia608']/class[@name='Eia608Decoder']/method[@name='queueInputBuffer' and count(parameter)=1]/parameter[1]" name="type">java.lang.Object</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.upstream.cache']/class[@name='LeastRecentlyUsedCacheEvictor']/method[@name='compare']/parameter" name="type">java.lang.Object</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.upstream']/interface[@name='HttpDataSource.Factory']/method[@name='createDataSource' and count(parameter)=0]" name="return">com.google.android.exoplayer2.upstream.DataSource</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.upstream']/class[@name='DefaultDataSourceFactory']/method[@name='createDataSource' and count(parameter)=0]" name="return">com.google.android.exoplayer2.upstream.DataSource</attr>
+	<attr path="/api/package[@name='com.google.android.exoplayer2.upstream']/class[@name='DefaultHttpDataSourceFactory']/method[@name='createDataSource' and count(parameter)=0]" name="return">com.google.android.exoplayer2.upstream.DataSource</attr>
+	
+	<!-- For some reason some methods are not added automatically -->
+	<add-node path="/api/package[@name='com.google.android.exoplayer2.text.subrip']/class[@name='SubripDecoder']">
+    	<method abstract="false" 
+				override="true" 
+				deprecated="not deprecated" 
+				final="false" 
+				name="decode" 
+				native="false" 
+				return="com.google.android.exoplayer2.text.Subtitle" 
+				static="false" 
+				synchronized="false" 
+				visibility="protected">
+			<parameter name="data" type="byte[]" />
+			<parameter name="length" type="int" />
+		</method>
+	</add-node>
+	<add-node path="/api/package[@name='com.google.android.exoplayer2.text.ttml']/class[@name='TtmlDecoder']">
+    	<method abstract="false" 
+				override="true" 
+				deprecated="not deprecated" 
+				final="false" 
+				name="decode" 
+				native="false" 
+				return="com.google.android.exoplayer2.text.Subtitle" 
+				static="false" 
+				synchronized="false" 
+				visibility="protected">
+			<parameter name="data" type="byte[]" />
+			<parameter name="length" type="int" />
+		</method>
+	</add-node>
+	<add-node path="/api/package[@name='com.google.android.exoplayer2.text.webvtt']/class[@name='Mp4WebvttDecoder']">
+    	<method abstract="false" 
+				override="true" 
+				deprecated="not deprecated" 
+				final="false" 
+				name="decode" 
+				native="false" 
+				return="com.google.android.exoplayer2.text.Subtitle" 
+				static="false" 
+				synchronized="false" 
+				visibility="protected">
+			<parameter name="data" type="byte[]" />
+			<parameter name="length" type="int" />
+		</method>
+	</add-node>
+	<add-node path="/api/package[@name='com.google.android.exoplayer2.text.webvtt']/class[@name='WebvttDecoder']">
+    	<method abstract="false" 
+				override="true" 
+				deprecated="not deprecated" 
+				final="false" 
+				name="decode" 
+				native="false" 
+				return="com.google.android.exoplayer2.text.Subtitle" 
+				static="false" 
+				synchronized="false" 
+				visibility="protected">
+			<parameter name="data" type="byte[]" />
+			<parameter name="length" type="int" />
+		</method>
+	</add-node>
+	<add-node path="/api/package[@name='com.google.android.exoplayer2.text.subrip']/class[@name='SubripDecoder']">
+    	<method abstract="false" 
+				override="true" 
+				deprecated="not deprecated" 
+				final="false" 
+				name="decode" 
+				native="false" 
+				return="java.lang.Object" 
+				static="false" 
+				synchronized="false" 
+				visibility="protected">
+			<parameter name="inputBuffer" type="java.lang.Object" />
+			<parameter name="outputBuffer" type="java.lang.Object" />
+			<parameter name="reset" type="bool" />
+		</method>
+	</add-node>
+	<add-node path="/api/package[@name='com.google.android.exoplayer2.text.ttml']/class[@name='TtmlDecoder']">
+    	<method abstract="false" 
+				override="true" 
+				deprecated="not deprecated" 
+				final="false" 
+				name="decode" 
+				native="false" 
+				return="java.lang.Object" 
+				static="false" 
+				synchronized="false" 
+				visibility="protected">
+			<parameter name="inputBuffer" type="java.lang.Object" />
+			<parameter name="outputBuffer" type="java.lang.Object" />
+			<parameter name="reset" type="bool" />
+		</method>
+	</add-node>
+	<add-node path="/api/package[@name='com.google.android.exoplayer2.text.tx3g']/class[@name='Tx3gDecoder']">
+    	<method abstract="false" 
+				override="true" 
+				deprecated="not deprecated" 
+				final="false" 
+				name="decode" 
+				native="false" 
+				return="java.lang.Object" 
+				static="false" 
+				synchronized="false" 
+				visibility="protected">
+			<parameter name="inputBuffer" type="java.lang.Object" />
+			<parameter name="outputBuffer" type="java.lang.Object" />
+			<parameter name="reset" type="bool" />
+		</method>
+	</add-node>
+	<add-node path="/api/package[@name='com.google.android.exoplayer2.text.webvtt']/class[@name='Mp4WebvttDecoder']">
+    	<method abstract="false" 
+				override="true" 
+				deprecated="not deprecated" 
+				final="false" 
+				name="decode" 
+				native="false" 
+				return="java.lang.Object" 
+				static="false" 
+				synchronized="false" 
+				visibility="protected">
+			<parameter name="inputBuffer" type="java.lang.Object" />
+			<parameter name="outputBuffer" type="java.lang.Object" />
+			<parameter name="reset" type="bool" />
+		</method>
+	</add-node>
+	<add-node path="/api/package[@name='com.google.android.exoplayer2.text.webvtt']/class[@name='WebvttDecoder']">
+    	<method abstract="false" 
+				override="true" 
+				deprecated="not deprecated" 
+				final="false" 
+				name="decode" 
+				native="false" 
+				return="java.lang.Object" 
+				static="false" 
+				synchronized="false" 
+				visibility="protected">
+			<parameter name="inputBuffer" type="java.lang.Object" />
+			<parameter name="outputBuffer" type="java.lang.Object" />
+			<parameter name="reset" type="bool" />
+		</method>
+	</add-node>
+
+	<!-- Method and property with the same name -->
+	<attr path="/api/package[@name='com.google.android.exoplayer2.source.chunk']/class[@name='InitializationChunk']/method[@name='getSeekMap' and count(parameter)=0]" name="managedName">Map</attr>
+
+</metadata>
