@@ -7,9 +7,15 @@
 		*The setter of PlaybackSpeed (check Additions)
 		*getSeekMap renaming
 	-->
+<!-- Changes for Exoplayer version 2.0.3	-->
+	<attr path="/api/package[@name='com.google.android.exoplayer2']/interface[@name='SimpleExoPlayer.VideoListener']/method[@name='onRenderedFirstFrame' and count(parameter)=0]" name="eventName">RenderedFirstF</attr>
+<!--	<attr path="/api/package[@name='com.google.android.exoplayer2']/interface[@name='SimpleExoPlayer.VideoListener']/method[@name='onRenderedFirstFrame' and count(parameter)=1]" name="eventName">RenderedFirstFrame2</attr>-->
+	<remove-node path="/api/package[@name='com.google.android.exoplayer2.text.cea']" />
+	<remove-node path="/api/package[@name='com.google.android.exoplayer2.trackselection']/class[@name='TrackSelections']" />
 
-	<!-- Same method names in nested interfaces -->
-	<attr path="/api/package[@name='com.google.android.exoplayer2']/interface[@name='SimpleExoPlayer.VideoListener']/method[@name='onRenderedFirstFrame' and count(parameter)=1]" name="eventName">RenderedFirstFrame2</attr>
+	
+
+<!-- Same method names in nested interfaces -->
 	<attr path="/api/package[@name='com.google.android.exoplayer2']/interface[@name='SimpleExoPlayer.VideoListener']/method[@name='onVideoDisabled' and count(parameter)=1]" name="eventName">VideoDisabled2</attr>
 	<attr path="/api/package[@name='com.google.android.exoplayer2']/interface[@name='SimpleExoPlayer.VideoListener']/method[@name='onVideoSizeChanged' and count(parameter)=4]" name="eventName">VideoSizeChanged2</attr>
 
