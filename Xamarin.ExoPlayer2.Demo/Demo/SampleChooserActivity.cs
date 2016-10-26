@@ -17,7 +17,7 @@ using Droid = Android;
 
 namespace Xamarin.ExoPlayer2.Demo.Demo
 {
-	[Activity(Label = "Xamarin.ExoPlayer2.Demo", MainLauncher = true, Icon = "@drawable/ic_launcher")]
+	[Activity(Label = "Xamarin ExoPlayer 2", MainLauncher = true, Icon = "@drawable/ic_launcher")]
 	public class SampleChooserActivity : Activity, ExpandableListView.IOnChildClickListener
 	{
 		private static string TAG = "SampleChooserActivity";
