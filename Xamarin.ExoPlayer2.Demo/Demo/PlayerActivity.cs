@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -13,6 +14,7 @@ using Com.Google.Android.Exoplayer2.Source;
 using Com.Google.Android.Exoplayer2.Source.Dash;
 using Com.Google.Android.Exoplayer2.Source.Hls;
 using Com.Google.Android.Exoplayer2.Source.Smoothstreaming;
+using Com.Google.Android.Exoplayer2.Text;
 using Com.Google.Android.Exoplayer2.Trackselection;
 using Com.Google.Android.Exoplayer2.UI;
 using Com.Google.Android.Exoplayer2.Upstream;
@@ -23,9 +25,9 @@ using Java.Util;
 
 namespace Xamarin.ExoPlayer2.Demo.Demo
 {
-	[Activity(Label = "Xamarin ExoPlayer2 Demo", Icon = "@mipmap/icon")]
+	[Activity]
 	public class PlayerActivity : Activity, View.IOnClickListener, IExoPlayerEventListener,
-	MappingTrackSelector.IEventListener, PlaybackControlView.IVisibilityListener
+	MappingTrackSelector.IEventListener, PlaybackControlView.IVisibilityListener, TextRenderer.IOutput
 	{
 		public static readonly string DrmSchemeUuidExtra = "drm_scheme_uuid";
 		public static readonly string DrmLicenseUrl = "drm_license_url";
@@ -97,6 +99,7 @@ namespace Xamarin.ExoPlayer2.Demo.Demo
 
 			_simpleExoPlayerView = (SimpleExoPlayerView)FindViewById(Resource.Id.player_view);
 			_simpleExoPlayerView.SetControllerVisibilityListener(this);
+			//_simpleExoPlayerView.SetUseController(false);
 			_simpleExoPlayerView.RequestFocus();
 		}
 
@@ -555,6 +558,11 @@ namespace Xamarin.ExoPlayer2.Demo.Demo
 		private void ShowToast(string message)
 		{
 			Toast.MakeText(ApplicationContext, message, ToastLength.Long).Show();
+		}
+
+		public void OnCues(IList<Cue> p0)
+		{
+			throw new NotImplementedException();
 		}
 
 		#endregion
